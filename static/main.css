@@ -1,0 +1,79 @@
+body{
+  background-color: #474646;
+  color: white;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+.navbar{
+  background-color: #211c1c;
+  height: 10vh;
+  color:#D95284;
+  font-family: 'Indie Flower', cursive;
+}
+
+.navbar h5{
+  font-size: 2em;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.left, .content{
+  height: 90vh;
+  overflow-y: scroll;
+  padding: 1em;
+}
+.left{
+  background-color: #3b3939;
+}
+
+.content{
+    padding-bottom: 50px;
+}
+
+.displayname{
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+.displayform{
+  padding: 25px;
+  background-color: #211c1c;
+  height: auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  align-content:center;
+}
+
+.displayform form{
+  width: 100%;
+  padding: 25px;
+}
+.displayform form label{
+  font-size: 2em;
+}
+.displayform form button{
+  background-color: #D95284;
+  color: white;
+  width: 40%;
+}

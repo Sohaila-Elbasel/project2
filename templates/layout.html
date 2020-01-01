@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/main.css">
+
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar">
+      <h5 class="navbar-brand">
+        FLACK
+      </h5>
+    </nav>
+    <!-- container -->
+    <div class="container-fluid">
+      {% if displayName_html == None%}
+        <div class="container displayname">
+          <div class="displayform rounded">
+            <form class="" action="" method="post">
+              <div class="form-group">
+                <label for="displayName">Enter Your Display Name</label>
+              </div>
+              <div class="form-group">
+                  <input class="form-control" id="displayName" type="text" name="displayname" placeholder="Set a display name">
+                  {% if message %}
+                    <small id="emailHelp" class="form-text text-danger">{{ message }}</small>
+                  {% endif %}
+              </div>
+              <div class="form-group">
+                  <button class="btn" type="submit" name="button">OK</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      {% else %}
+      <div class="row">
+        <aside class="col-2 left">
+          <ul>
+            Hi {{ displayName_html }}
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li><li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li><li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li><li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li><li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li><li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li><li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li>
+            <li>
+              TEST
+            </li><li>
+              TEST
+            </li>
+
+          </ul>
+        </aside>
+        <div class="col-10 content">
+          {% block body %}
+
+          {% endblock %}
+        </div>
+      </div>
+    {% endif %}
+    </div>
+  </body>
+</html>
