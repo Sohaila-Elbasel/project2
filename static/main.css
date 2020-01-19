@@ -46,10 +46,14 @@ body{
     padding-bottom: 50px;
 }
 
-.displayname{
+.displaycontent-div{
+  display: none;
+}
+
+.displayname-div{
   height: 90vh;
   width: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
 
 }
@@ -76,4 +80,8 @@ body{
   background-color: #D95284;
   color: white;
   width: 40%;
+}
+
+.form-group small{
+  display: none;
 }

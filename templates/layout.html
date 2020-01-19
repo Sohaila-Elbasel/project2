@@ -11,6 +11,29 @@
     <link rel="stylesheet" href="/static/main.css">
 
     <title>{% block title %}{% endblock %}</title>
+
+    <!-- Script -->
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', () => {
+        if(!localStorage.getItem('user_name')){
+          document.querySelector('.displayname-div').style.display = "flex";
+          document.querySelector('.displaycontent-div').style.display = "none";
+        }else{
+          document.querySelector('.displayname-div').style.display = "none";
+          document.querySelector('.displaycontent-div').style.display = "flex";
+        }
+        form = document.querySelector(".name-form");
+        form.onsubmit = () => {
+          name = document.querySelector('#displayName').value;
+          if(!name.replace(/\s/g, '').length){
+            document.querySelector('.form-group small').style.display = "flex";
+            return false;
+          }
+          localStorage.setItem('user_name', name);
+        };
+
+      });
+    </script>
   </head>
   <body>
     <!-- navbar -->
@@ -21,18 +44,18 @@
     </nav>
     <!-- container -->
     <div class="container-fluid">
-      {% if displayName_html == None%}
-        <div class="container displayname">
+
+      <!-- __________________Display Name BLOCK_________________ -->
+        <div class="container displayname-div">
           <div class="displayform rounded">
-            <form class="" action="" method="post">
+            <form class="name-form" action="" method="post">
               <div class="form-group">
                 <label for="displayName">Enter Your Display Name</label>
+                <p>{{ displayName_html }}</p>
               </div>
               <div class="form-group">
                   <input class="form-control" id="displayName" type="text" name="displayname" placeholder="Set a display name">
-                  {% if message %}
-                    <small id="emailHelp" class="form-text text-danger">{{ message }}</small>
-                  {% endif %}
+                  <small id="emailHelp" class="form-text text-danger">Enter proper name</small>
               </div>
               <div class="form-group">
                   <button class="btn" type="submit" name="button">OK</button>
@@ -41,8 +64,10 @@
             </form>
           </div>
         </div>
-      {% else %}
-      <div class="row">
+    <!-- END Display name -->
+
+<!-- ______________display Content ______________- -->
+      <div class="row displaycontent-div">
         <aside class="col-2 left">
           <ul>
             Hi {{ displayName_html }}
@@ -165,7 +190,7 @@
           {% endblock %}
         </div>
       </div>
-    {% endif %}
+      <!-- Display Content End -->
     </div>
   </body>
 </html>
