@@ -21,6 +21,7 @@
         }else{
           document.querySelector('.displayname-div').style.display = "none";
           document.querySelector('.displaycontent-div').style.display = "flex";
+          document.querySelector('.create_channel_div').style.display = "none";
         }
         form = document.querySelector(".name-form");
         form.onsubmit = () => {
@@ -32,6 +33,17 @@
           localStorage.setItem('user_name', name);
         };
 
+        document.querySelector(".hi_name").innerHTML = "HI, " + localStorage.getItem('user_name');
+
+        // create channel
+        document.querySelector('.create_channel').onclick = () => {
+          document.querySelector('.channel_content').style.display = "none";
+          document.querySelector('.create_channel_div').style.display = "flex";
+        }
+        //submit new channel
+        document.querySelector('.create_channel').onsubmit = () => {
+          
+        }
       });
     </script>
   </head>
@@ -51,7 +63,6 @@
             <form class="name-form" action="" method="post">
               <div class="form-group">
                 <label for="displayName">Enter Your Display Name</label>
-                <p>{{ displayName_html }}</p>
               </div>
               <div class="form-group">
                   <input class="form-control" id="displayName" type="text" name="displayname" placeholder="Set a display name">
@@ -69,8 +80,9 @@
 <!-- ______________display Content ______________- -->
       <div class="row displaycontent-div">
         <aside class="col-2 left">
+          <h4 class="hi_name"></h4>
+          <button class="btn create_channel" type="button" name="create_channel">&#43; Creat channel</button>
           <ul>
-            Hi {{ displayName_html }}
             <li>
               TEST
             </li>
@@ -184,10 +196,31 @@
 
           </ul>
         </aside>
+
         <div class="col-10 content">
+          <!-- __________________create_channel_div_________________ -->
+            <div class="container create_channel_div">
+                <form class="channel-form" action="" method="post">
+                  <div class="form-group">
+                    <label for="displayName">Create new channel</label>
+                  </div>
+                  <div class="form-group">
+                      <input class="form-control" id="" type="text" name="channel_name" placeholder="Set a name">
+                      <small id="emailHelp" class="form-text text-danger">this channel is already exist</small>
+                  </div>
+                  <div class="form-group">
+                      <button class="btn" type="submit" name="button">OK</button>
+                  </div>
+
+                </form>
+            </div>
+        <!-- END create_channel_div -->
+
+        <div class="channel_content">
           {% block body %}
 
           {% endblock %}
+        </div>
         </div>
       </div>
       <!-- Display Content End -->

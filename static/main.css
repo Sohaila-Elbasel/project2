@@ -85,3 +85,17 @@ body{
 .form-group small{
   display: none;
 }
+
+.create_channel{
+  background-color: #D95284;
+  color: #fff;
+}
+
+.create_channel_div{
+  text-align: center;
+}
+
+.create_channel_div .form-group .btn{
+  background-color: #D95284;
+  color: white;
+}
