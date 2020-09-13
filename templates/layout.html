@@ -9,43 +9,12 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/main.css">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Script -->
-    <script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', () => {
-        if(!localStorage.getItem('user_name')){
-          document.querySelector('.displayname-div').style.display = "flex";
-          document.querySelector('.displaycontent-div').style.display = "none";
-        }else{
-          document.querySelector('.displayname-div').style.display = "none";
-          document.querySelector('.displaycontent-div').style.display = "flex";
-          document.querySelector('.create_channel_div').style.display = "none";
-        }
-        form = document.querySelector(".name-form");
-        form.onsubmit = () => {
-          name = document.querySelector('#displayName').value;
-          if(!name.replace(/\s/g, '').length){
-            document.querySelector('.form-group small').style.display = "flex";
-            return false;
-          }
-          localStorage.setItem('user_name', name);
-        };
-
-        document.querySelector(".hi_name").innerHTML = "HI, " + localStorage.getItem('user_name');
-
-        // create channel
-        document.querySelector('.create_channel').onclick = () => {
-          document.querySelector('.channel_content').style.display = "none";
-          document.querySelector('.create_channel_div').style.display = "flex";
-        }
-        //submit new channel
-        document.querySelector('.create_channel').onsubmit = () => {
-          
-        }
-      });
-    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
     <!-- navbar -->
@@ -81,119 +50,13 @@
       <div class="row displaycontent-div">
         <aside class="col-2 left">
           <h4 class="hi_name"></h4>
-          <button class="btn create_channel" type="button" name="create_channel">&#43; Creat channel</button>
+          <button class="btn mb-5 create_channel" type="button" name="create_channel">&#43; Create</button>
           <ul>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li><li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li><li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li><li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li><li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li><li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li><li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li>
-            <li>
-              TEST
-            </li><li>
-              TEST
-            </li>
-
+            {% if channels %}
+              {% for channel in channels.keys() %}
+                <li>- <a href="#">{{ channel }}</a></li>
+              {% endfor %}
+            {% endif %}
           </ul>
         </aside>
 
@@ -205,7 +68,7 @@
                     <label for="displayName">Create new channel</label>
                   </div>
                   <div class="form-group">
-                      <input class="form-control" id="" type="text" name="channel_name" placeholder="Set a name">
+                      <input class="form-control" id="channel_name" type="text" name="channel_name" placeholder="Set a name">
                       <small id="emailHelp" class="form-text text-danger">this channel is already exist</small>
                   </div>
                   <div class="form-group">

@@ -41,6 +41,29 @@ body{
 .left{
   background-color: #3b3939;
 }
+.left ul{
+  list-style-type: none;
+  margin-left: -10px;
+}
+.left ul li{
+  margin-bottom: 15px;
+}
+.left ul li a:hover,
+.left ul li a:link,
+.left ul li a:active,
+.left ul li a:visited{
+  color: #fff;
+}
+.left ul li a:hover,
+.left ul li a:link,
+.left ul li a:active,
+.left ul li a:visited{
+  text-decoration: none;
+}
+.left ul li a:hover{
+  color: #fbbbd8;
+}
+
 
 .content{
     padding-bottom: 50px;
@@ -98,4 +121,16 @@ body{
 .create_channel_div .form-group .btn{
   background-color: #D95284;
   color: white;
+}
+
+.list-group-item{
+  color: #fff;
+  background-color: inherit;
+  border: none;
+}
+
+.text-bar{
+  position: fixed;
+  bottom: 0;
+  background-color: #474646;
 }
