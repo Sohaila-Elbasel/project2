@@ -12,11 +12,19 @@
 
     </div>
     <br><br><br><br><br>
-    <div class="text-bar ">
-      <form>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Enter your message</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <div class="text-bar container-fluid ">
+      <form class="col-9 col-sm-9 mb-3">
+        <div class="input-group">
+          <label>Enter your text</label>
+          <div class="input-group is-invalid">
+            <div class="custom-file">
+              <input id="input-message" type="text" class="form-control">
+            </div>
+            <div class="input-group-append">
+               <button type="submit" data-channel='' id='send-message' class="btn btn-outline-secondary" type="button">Send</button>
+            </div>
+          </div>
+
         </div>
       </form>
     </div>

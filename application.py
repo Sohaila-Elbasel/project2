@@ -10,48 +10,48 @@ socketio = SocketIO(app)
 channels = {
         'general': {
                 'users': ['Sohaila', 'Dodge'],
-                'messages': {
-                        0: {
+                'messages': [
+                        {
                                 'username': 'Sohaila',
                                 'date': '9-5 15:45',
                                 'text': 'This is my first message'
                                 },
-                        1: {
+                        {
                                 'username': 'Dodge',
                                 'date': '9-5 16:00',
                                 'text': 'Hi Sohaila'
                                 },
-                        2: {
+                        {
                                 'username': 'Sohaila',
                                 'date': '9-5 18:00',
                                 'text': 'Third message'
                                 },
-                        }
+                        ]
                 },
         'Anime': {
                 'users': ['Sohaila', 'Lala'],
-                'messages': {
-                        0: {
+                'messages': [
+                        {
                                 'username': 'Sohaila',
                                 'date': '9-5 15:45',
                                 'text': 'first anime message'
                                 },
-                        1: {
+                        {
                                 'username': 'Lala',
                                 'date': '9-5 16:00',
                                 'text': 'Hi anime'
                                 },
-                        2: {
+                        {
                                 'username': 'Sohaila',
                                 'date': '9-5 18:00',
                                 'text': 'Third message anime'
                                 },
-                        3: {
+                        {
                                 'username': 'Lala',
                                 'date': '9-5 18:00',
                                 'text': 'I love anime'
                                 },
-                        }
+                        ]
                 }
         }
 
@@ -61,13 +61,19 @@ def index():
 
 @app.route("/create/<string:name>")
 def create_channel(name):
-    channels[name] = {'text': ['Sohaila', 'Mohamed']}
+    channels[name] = {}
     return channels
 
 @app.route("/display/<string:name>")
 def display_channel(name):
     return channels[name]
 
+@socketio.on('send message')
+def send(data):
+    dict = {'username': data['username'], 'date': data['date'], 'text': data['text']}
+    channels[data['channel']]['messages'].append(dict)
+    channel = channels[data['channel']]
+    emit('new message', channel, broadcast= True)
 
 
 if __name__ =='__main__':
